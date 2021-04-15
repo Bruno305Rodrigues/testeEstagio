@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import Home from '../pages/Home';
+import Login from '../pages/Login';
 import User from '../pages/User';
-import Detalhe from '../pages/Detalhe';
 
 export default function Routes() {
     return(
@@ -9,8 +9,6 @@ export default function Routes() {
             <Switch>
               
                 <Route path="/" exact component={User}/>
-                <Route path="/detalhe" exact component={Detalhe}/>
-
             </Switch>
         </BrowserRouter>
     ); 

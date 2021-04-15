@@ -1,17 +1,27 @@
-import { Button, CardActionArea, CardActions, CardContent,  Container} from '@material-ui/core';
+import { Button, CardActionArea, CardActions, CardContent,  Container, makeStyles } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import api from '../../services/api';
 import { Corpo, Imagem, Estrutura, Nota, Titulo } from './style';
 import SearchAppBar from '../../components/Menu';
+import filmeDetalhe from '../../store/modules/filme/reducer';
 
 
 
 export default function User() {
 
-  
-  
-  
+    const useStyles = makeStyles({
+        root: {
+          maxWidth: 345,
+        },
+        media: {
+          height: 140,
+        },
+      });
+
+    const user = useSelector(s => s.user);
+    const classes = useStyles();
 
     const [users,setUsers] = useState(null);
 
@@ -43,7 +53,7 @@ export default function User() {
         <Nota nota={el.vote_average}>
           {el.vote_average}
         </Nota>
-        <Button  size="small" color="primary">
+        <Button  onClick={filmeDetalhe} size="small" color="primary">
           Detalhes
         </Button>
       </CardActions>

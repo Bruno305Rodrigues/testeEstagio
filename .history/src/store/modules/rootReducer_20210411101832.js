@@ -1,7 +1,7 @@
 import { combineReducers} from 'redux';
 
-import filme from './filme/reducer';
+import cart from './cart/reducer';
 
 export default combineReducers({
-    filme
+    cart,
 });

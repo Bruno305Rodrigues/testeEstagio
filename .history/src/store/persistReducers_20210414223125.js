@@ -7,7 +7,7 @@ export default (reducers) => {
     {
         key: 'gd-full',
         storage,
-        whitelist: ['filme'],
+        whitelist: ['cart', 'filme'],
     },
     reducers,
     );

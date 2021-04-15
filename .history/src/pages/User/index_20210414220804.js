@@ -1,17 +1,18 @@
-import { Button, CardActionArea, CardActions, CardContent,  Container} from '@material-ui/core';
+import { Button, CardActionArea, CardActions, CardContent,  Container, makeStyles } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import api from '../../services/api';
 import { Corpo, Imagem, Estrutura, Nota, Titulo } from './style';
 import SearchAppBar from '../../components/Menu';
+import { detalheDoFilme } from '../../store/modules/filme/action';
 
 
 
 export default function User() {
 
   
-  
-  
+
+
 
     const [users,setUsers] = useState(null);
 
@@ -43,7 +44,7 @@ export default function User() {
         <Nota nota={el.vote_average}>
           {el.vote_average}
         </Nota>
-        <Button  size="small" color="primary">
+        <Button  onClick={detalheDoFilme} size="small" color="primary">
           Detalhes
         </Button>
       </CardActions>
