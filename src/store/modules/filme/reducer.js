@@ -1,5 +1,5 @@
 const estadoInicial = {
-    filmes: [],
+    filme:{},
     
 
 };
@@ -14,24 +14,14 @@ export default function filmeDetalhe(state= estadoInicial,
         
         switch(type) {
             case 'ver/DETALHE' :
-               
-
+              
+            
+            return {filme:payload}
                 
-                return  {filmes:payload}
+            
                 
-                    
-                   
-
-                   
-                    
-                    
-                    
                 
-
-                
-        
-
-        default:
+         default:
             return state;
         }          
     }
