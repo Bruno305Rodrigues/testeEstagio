@@ -30,6 +30,8 @@ export default function CardFilme(props) {
     let data = new Date(props.el.release_date);
     let dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
 
+
+   
     return (
       
         <Corpo key={props.el.title}>
@@ -42,7 +44,7 @@ export default function CardFilme(props) {
           <Titulo> 
            {props.el.title || "(Titulo não informado)"}
           </Titulo>
-          <Data>{dataFormatada}</Data>
+          <Data>{dataFormatada} </Data>
           
         </CardContent>
       </CardActionArea>

@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import CardFilme from '../../components/Card'
+import axios from 'axios';
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,8 +67,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
   const classes = useStyles();
+
+  const [filme, setFilmes] = useState("")
+
+  const [nome, setNome] = useState("")
+  
+  function digitarNome(e){
+    setNome(e.target.value)
+  }
+
+  function alterar(e) {
+    props.metodo(filme)
+  }
+  const neww = nome
+
+  const baseUrl = `https://api.themoviedb.org/3/search/movie?api_key=c8148d98d2d74fb8f5bb33488e938599&query=${neww}`
+  console.log(neww)
+
+  async function buscarDados(){
+
+    const lista = []  ; 
+   console.log(baseUrl);
+    
+    const data = await axios.get(baseUrl);
+        
+    console.log(data)
+
+      
+
+       data.data.results.forEach(el =>{
+           lista.push(
+            <CardFilme el={el} />
+           )
+       });
+
+       setFilmes(lista)
+
+      
+
+   }
+   useEffect(() => {
+    buscarDados()
+}, [nome])
+  
+ 
+
+  
 
   return (
     <div className={classes.root}>
@@ -85,14 +135,10 @@ export default function SearchAppBar() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <br />
+          <input type="text" value={nome}
+          onChange={digitarNome} />
+          <button onClick={alterar}>Pesquisar</button>
           </div>
         </Toolbar>
       </AppBar>

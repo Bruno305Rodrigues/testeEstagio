@@ -16,9 +16,18 @@ export default function User() {
   
     const [users,setUsers] = useState(null);
 
+    function alterarTela(valor) {
+        setUsers(valor)
+    }
+
+    function trocar(e){
+        setUsers(e.target.value)
+    }
+
     async function buscarDados(){
 
      const lista = []  ; 
+    
 
         const data = await api.getUsers();
 
@@ -41,8 +50,9 @@ export default function User() {
     return(
         <Container>
             
-            <SearchAppBar />
+            <SearchAppBar metodo={alterarTela} />
                <Estrutura>{users}</Estrutura>
+            <input type="text" onChange={trocar} />
                        
         </Container>
     );
