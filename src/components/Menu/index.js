@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -9,6 +6,7 @@ import CardFilme from '../../components/Card'
 import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button, InputBase } from '@material-ui/core';
+import { MeuMenu } from './style';
 
 
 
@@ -125,23 +123,20 @@ export default function SearchAppBar(props) {
 
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+      
+        <MeuMenu >
+        
+         
+          <div>
+          <Typography className={classes.title} variant="h6" wrap>
             Top Filmes
           </Typography>
-          <Button variant="contained" color="primary" href= '/'>
+          </div>
+          <div>
+          <Button variant="contained" color="dark" href= '/'>
             Destaques
           </Button>
+          </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -159,12 +154,10 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button variant="contained" color="primary" onClick={alterar}>
+            <Button variant="contained" color="ligth" onClick={alterar}>
               Pesquisar
           </Button>
           </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+        </MeuMenu>
   );
 }
