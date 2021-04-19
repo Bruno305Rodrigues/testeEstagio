@@ -73,8 +73,8 @@ export default function SearchAppBar(props) {
   const [filme, setFilmes] = useState("")
 
   const [nome, setNome] = useState("")
-  
-  function digitarNome(e){
+
+  function digitarNome(e) {
     setNome(e.target.value)
   }
 
@@ -86,35 +86,43 @@ export default function SearchAppBar(props) {
   const baseUrl = `https://api.themoviedb.org/3/search/movie?api_key=c8148d98d2d74fb8f5bb33488e938599&query=${neww}`
   console.log(neww)
 
-  async function buscarDados(){
+  async function buscarDados() {
 
-    const lista = []  ; 
-   console.log(baseUrl);
-    
+    const lista = [];
+    console.log(baseUrl);
+
     const data = await axios.get(baseUrl);
-        
+
     console.log(data)
 
-      
+   
 
-       data.data.results.forEach(el =>{
-           lista.push(
-            <CardFilme el={el} />
-           )
-       });
+    data.data.results.forEach(el => {
+     
+    
+      lista.push(
+        <CardFilme el={el} />
+       
+      )
+    });
 
-       setFilmes(lista)
+   
+    setFilmes(lista)
+    
 
-      
 
-   }
-   useEffect(() => {
-    buscarDados()
-}, [nome])
-  
+
+  }
+
  
 
-  
+  useEffect(() => {
+    buscarDados()
+  }, [nome])
+
+
+
+
 
   return (
     <div className={classes.root}>
@@ -131,12 +139,15 @@ export default function SearchAppBar(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             Top Filmes
           </Typography>
+          <Button variant="contained" color="primary" href= '/'>
+            Destaques
+          </Button>
           <div className={classes.search}>
-          <div className={classes.searchIcon}>
+            <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
 
-           
+
 
             <InputBase
               placeholder="Search…"
@@ -148,8 +159,8 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          <Button variant="contained" color="primary" onClick={alterar}>
-                        Pesquisar
+            <Button variant="contained" color="primary" onClick={alterar}>
+              Pesquisar
           </Button>
           </div>
         </Toolbar>
