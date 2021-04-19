@@ -5,10 +5,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import CardFilme from '../../components/Card'
 import axios from 'axios';
-
+import SearchIcon from '@material-ui/icons/Search';
+import { Button, InputBase } from '@material-ui/core';
 
 
 
@@ -132,13 +132,25 @@ export default function SearchAppBar(props) {
             Top Filmes
           </Typography>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <br />
-          <input type="text" value={nome}
-          onChange={digitarNome} />
-          <button onClick={alterar}>Pesquisar</button>
+
+           
+
+            <InputBase
+              placeholder="Search…"
+              value={nome}
+              onChange={digitarNome}
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          <Button variant="contained" color="primary" onClick={alterar}>
+                        Pesquisar
+          </Button>
           </div>
         </Toolbar>
       </AppBar>

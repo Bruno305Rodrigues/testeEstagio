@@ -29,8 +29,7 @@ export default function CardFilme(props) {
        const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
     let data = new Date(props.el.release_date);
     let dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
-
-
+  
    
     return (
       
@@ -38,7 +37,7 @@ export default function CardFilme(props) {
       <CardActionArea>
         <Imagem
          
-          img src = {linkImg + props.el.poster_path}
+          img src = {linkImg + props.el.poster_path} 
         />
         <CardContent>
           <Titulo> 

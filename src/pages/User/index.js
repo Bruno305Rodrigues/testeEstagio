@@ -20,9 +20,7 @@ export default function User() {
         setUsers(valor)
     }
 
-    function trocar(e){
-        setUsers(e.target.value)
-    }
+   
 
     async function buscarDados(){
 
@@ -52,7 +50,6 @@ export default function User() {
             
             <SearchAppBar metodo={alterarTela} />
                <Estrutura>{users}</Estrutura>
-            <input type="text" onChange={trocar} />
                        
         </Container>
     );
