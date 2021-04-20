@@ -110,7 +110,7 @@ export default function SearchAppBar(props) {
     
   
     if(data.data.total_pages === 0) {
-      alert("Nenhum filme encontrado!")
+      alert("Ops! Filme não encontrado!")
       window.location = "/";
     }
 

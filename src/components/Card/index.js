@@ -29,6 +29,9 @@ export default function CardFilme(props) {
        const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
     let data = new Date(props.el.release_date);
     let dataFormatada = ((data.getDate() + " " + meses[(data.getMonth())] + " " + data.getFullYear()));
+    if(!props.el.release_date){
+      dataFormatada = "(Data não informada)";
+    }
   
    
     return (
