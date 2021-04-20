@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import CardFilme from '../../components/Card'
 import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
@@ -77,12 +76,12 @@ export default function SearchAppBar(props) {
   }
 
   function alterar(e) {
+    
     props.metodo(filme)
   }
   const neww = nome
 
   const baseUrl = `https://api.themoviedb.org/3/search/movie?api_key=c8148d98d2d74fb8f5bb33488e938599&query=${neww}`
-  console.log(neww)
 
   async function buscarDados() {
 
@@ -96,25 +95,32 @@ export default function SearchAppBar(props) {
    
 
     data.data.results.forEach(el => {
-     
+      
+        
+      
     
       lista.push(
         <CardFilme el={el} />
        
       )
     });
-
-   
+    
+  
     setFilmes(lista)
     
-
-
+  
+    if(data.data.total_pages === 0) {
+      alert("Nenhum filme encontrado!")
+      window.location = "/";
+    }
 
   }
 
- 
+  
+
 
   useEffect(() => {
+    
     buscarDados()
   }, [nome])
 
