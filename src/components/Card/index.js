@@ -32,7 +32,8 @@ export default function CardFilme(props) {
     if(!props.el.release_date){
       dataFormatada = "(Data não informada)";
     }
-  
+
+
    
     return (
       
@@ -40,7 +41,7 @@ export default function CardFilme(props) {
       <CardActionArea>
         <Imagem
          
-          img src = {linkImg + props.el.poster_path} 
+          img src = {linkImg + props.el.poster_path}
         />
         <CardContent>
           <Titulo> 

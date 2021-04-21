@@ -5,7 +5,7 @@ import CardFilme from '../../components/Card'
 import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button, InputBase } from '@material-ui/core';
-import { MeuMenu } from './style';
+import { CamposMenu, MeuMenu } from './style';
 
 
 
@@ -76,7 +76,7 @@ export default function SearchAppBar(props) {
   }
 
   function alterar(e) {
-    
+
     props.metodo(filme)
   }
   const neww = nome
@@ -92,35 +92,35 @@ export default function SearchAppBar(props) {
 
     console.log(data)
 
-   
+
 
     data.data.results.forEach(el => {
-      
-        
-      
-    
+
+
+
+
       lista.push(
         <CardFilme el={el} />
-       
+
       )
     });
-    
-  
+
+
     setFilmes(lista)
-    
-  
-    if(data.data.total_pages === 0) {
+
+
+    if (data.data.total_pages === 0) {
       alert("Ops! Filme não encontrado!")
       window.location = "/";
     }
 
   }
 
-  
+
 
 
   useEffect(() => {
-    
+
     buscarDados()
   }, [nome])
 
@@ -129,21 +129,23 @@ export default function SearchAppBar(props) {
 
 
   return (
-      
-        <MeuMenu >
-        
-         
-          <div>
+    <div>
+      <MeuMenu >
+
+
+        <div>
           <Typography className={classes.title} variant="h6" wrap>
             Top Filmes
           </Typography>
-          </div>
-          <div>
-          <Button variant="contained" color="dark" href= '/'>
+        </div>
+        <div>
+          <Button variant="contained" color="dark" href='/'>
             Destaques
           </Button>
-          </div>
+        </div>
+        <CamposMenu>
           <div className={classes.search}>
+
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -160,10 +162,16 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <Button variant="contained" color="ligth" onClick={alterar}>
-              Pesquisar
-          </Button>
+
+            
           </div>
-        </MeuMenu>
+          <div>
+              <Button  variant="contained" color="dark" onClick={alterar}>
+                Pesquisar
+                  </Button>
+            </div>
+        </CamposMenu>
+      </MeuMenu>
+    </div>
   );
 }
