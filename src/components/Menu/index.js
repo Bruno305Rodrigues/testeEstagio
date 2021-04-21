@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
+    fontFamily: 'impact',
+    boxShadow: '0 3px 5px 2px black',
     flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -134,7 +136,7 @@ export default function SearchAppBar(props) {
 
 
         <div>
-          <Typography className={classes.title} variant="h6" wrap>
+          <Typography className={classes.title} variant="h3" wrap>
             Top Filmes
           </Typography>
         </div>

@@ -22,5 +22,7 @@ padding: 10px;
 
 `
 
-
+export const Logo = styled.h1 `
+    font-size:30px;
+`;
 
