@@ -7,8 +7,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Button, InputBase } from '@material-ui/core';
 import { CamposMenu, MeuMenu } from './style';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -53,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -88,53 +85,34 @@ export default function SearchAppBar(props) {
   async function buscarDados() {
 
     const lista = [];
-    console.log(baseUrl);
 
     const data = await axios.get(baseUrl);
 
-    console.log(data)
+  data.data.results.forEach(el => {
 
-
-
-    data.data.results.forEach(el => {
-
-
-
-
-      lista.push(
+  lista.push(
         <CardFilme el={el} />
 
       )
     });
 
-
     setFilmes(lista)
 
-
-    if (data.data.total_pages === 0) {
+   if (data.data.total_pages === 0) {
       alert("Ops! Filme não encontrado!")
       window.location = "/";
     }
 
   }
 
-
-
-
   useEffect(() => {
 
     buscarDados()
   }, [nome])
 
-
-
-
-
   return (
     <div>
       <MeuMenu >
-
-
         <div>
           <Typography className={classes.title} variant="h3" wrap>
             Top Filmes
@@ -151,9 +129,6 @@ export default function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-
-
-
             <InputBase
               placeholder="Search…"
               value={nome}
@@ -163,9 +138,7 @@ export default function SearchAppBar(props) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-            />
-
-            
+            />      
           </div>
           <div>
               <Button  variant="contained" color="dark" onClick={alterar}>

@@ -16,8 +16,6 @@ export default function Detalhes(props){
       window.location = '/';
     }
 
-    
-
     return (
       
         <Container>
